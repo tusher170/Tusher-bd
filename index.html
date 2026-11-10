@@ -278,8 +278,10 @@ const chatMessages = $('chat-messages');
 chatButton.addEventListener('click', () => {
   chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
 });
-chatForm.addEventListener('submit', event => {
+
+chatForm.addEventListener('submit', async (event) => {
   event.preventDefault();
+
   const question = chatInput.value.trim();
   if (!question) return;
 
@@ -287,23 +289,40 @@ chatForm.addEventListener('submit', event => {
   userMessage.textContent = 'আপনি: ' + question;
   chatMessages.appendChild(userMessage);
 
-  let answer = 'এই প্রশ্নের সঠিক উত্তর দিতে আমাদের সঙ্গে WhatsApp-এ যোগাযোগ করুন।';
-  const q = question.toLowerCase();
+  const botMessage = document.createElement('p');
+  botMessage.textContent = 'Tusher BD: উত্তর তৈরি হচ্ছে...';
+  chatMessages.appendChild(botMessage);
 
-  if (q.includes('অর্ডার') || q.includes('order')) {
-    answer = 'অর্ডার করতে ওয়েবসাইটের অর্ডার ফর্ম ব্যবহার করুন।';
-  } else if (q.includes('যোগাযোগ') || q.includes('contact')) {
-    answer = 'আমাদের ওয়েবসাইটের Contact অংশ দেখুন।';
-  } else if (q.includes('দাম') || q.includes('price')) {
-    answer = 'পণ্যের দাম জানতে আমাদের সঙ্গে যোগাযোগ করুন।';
+  chatInput.value = '';
+
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: question
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error('AI request failed');
+    }
+
+    botMessage.textContent =
+      'Tusher BD: ' + (data.reply || 'উত্তর পাওয়া যায়নি');
+
+  } catch (error) {
+    botMessage.textContent =
+      'Tusher BD: সংযোগে সমস্যা হয়েছে। আবার চেষ্টা করুন।';
   }
 
-  const botMessage = document.createElement('p');
-  botMessage.textContent = 'Tusher BD: ' + answer;
-  chatMessages.appendChild(botMessage);
   chatMessages.scrollTop = chatMessages.scrollHeight;
-  chatInput.value = '';
 });
+
 </script>
 <script>
 // Rotate all eight service and offer messages automatically.
