@@ -314,11 +314,10 @@ chatForm.addEventListener('submit', async (event) => {
 
     botMessage.textContent =
       'Tusher BD: ' + (data.reply || 'উত্তর পাওয়া যায়নি');
-
-  } catch (error) {
-    botMessage.textContent =
-      'Tusher BD: সংযোগে সমস্যা হয়েছে। আবার চেষ্টা করুন।';
-  }
+} catch (error) {
+  botMessage.textContent =
+    'Tusher BD Error: ' + error.message;
+}
 
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });
