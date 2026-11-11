@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tusher BD - Your Digital Solution</title>
-  <!-- Font & Icons -->
+  <!-- Google Fonts & Font Awesome Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -331,6 +331,7 @@
       color: #64748b;
     }
 
+    /* Floating Chat Widget Button */
     .chat-widget-btn {
       position: fixed;
       bottom: 20px;
@@ -351,6 +352,147 @@
       transition: transform 0.2s;
     }
 
+    .chat-widget-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* Interactive Live Chat Box Modal */
+    .chat-box-modal {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 320px;
+      height: 420px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 300;
+      overflow: hidden;
+      animation: popup 0.3s ease-out;
+    }
+
+    @keyframes popup {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .chat-header {
+      background: var(--chat-green);
+      color: white;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    .chat-header span {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .message.bot {
+      background: #e2e8f0;
+      color: #0f172a;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .message.user {
+      background: var(--chat-green);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .chat-suggestions {
+      display: flex;
+      gap: 6px;
+      padding: 8px;
+      background: #fff;
+      overflow-x: auto;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .chip {
+      background: #e0f2fe;
+      color: #0284c7;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .chip:hover {
+      background: #bae6fd;
+    }
+
+    .chat-footer {
+      display: flex;
+      padding: 8px;
+      background: white;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .chat-send-btn {
+      background: var(--chat-green);
+      color: white;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-left: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    /* General Info Modal */
     .modal {
       position: fixed;
       top: 0;
@@ -494,10 +636,32 @@
       </div>
     </div>
 
-    <button class="chat-widget-btn" onclick="openModal('Tusher BD Chat', 'লাইভ চ্যাটের জন্য ধন্যবাদ! কিভাবে সাহায্য করতে পারি?')">
+    <!-- Sonal / Active Tusher BD Chat Widget Button -->
+    <button class="chat-widget-btn" onclick="toggleChatBox()">
       <i class="fa-solid fa-comment-dots"></i> Tusher BD Chat
     </button>
 
+    <!-- Interactive Live Chat Window -->
+    <div class="chat-box-modal" id="chatBoxModal">
+      <div class="chat-header">
+        <span><i class="fa-solid fa-robot"></i> Tusher BD Support</span>
+        <button class="chat-close" onclick="toggleChatBox()">&times;</button>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="message bot">হ্যালো! Tusher BD-তে আপনাকে স্বাগতম। আজ আপনাকে কীভাবে সাহায্য করতে পারি?</div>
+      </div>
+      <div class="chat-suggestions">
+        <button class="chip" onclick="sendSuggestion('সার্ভিসগুলো কি কি?')">সার্ভিসসমূহ</button>
+        <button class="chip" onclick="sendSuggestion('ডেলিভারি সময় কত?')">ডেলিভারি সময়</button>
+        <button class="chip" onclick="sendSuggestion('যোগাযোগ করব কীভাবে?')">যোগাযোগ</button>
+      </div>
+      <div class="chat-footer">
+        <input type="text" id="chatInput" class="chat-input" placeholder="এখানে মেসেজ লিখুন..." onkeypress="handleKeyPress(event)">
+        <button class="chat-send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+
+    <!-- General Info Modal -->
     <div class="modal" id="infoModal">
       <div class="modal-content">
         <div class="modal-title" id="modalTitle">শিরোনাম</div>
@@ -509,6 +673,7 @@
   </div>
 
   <script>
+    // Navigation Menu Drawer Logic
     const openMenu = document.getElementById('openMenu');
     const closeMenu = document.getElementById('closeMenu');
     const navDrawer = document.getElementById('navDrawer');
@@ -527,6 +692,7 @@
     closeMenu.addEventListener('click', closeMenuDrawer);
     overlay.addEventListener('click', closeMenuDrawer);
 
+    // Modal Popup Logic
     const modal = document.getElementById('infoModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
@@ -539,6 +705,67 @@
 
     function closeModal() {
       modal.style.display = 'none';
+    }
+
+    // Interactive Chat Bot Logic
+    const chatBoxModal = document.getElementById('chatBoxModal');
+    const chatBody = document.getElementById('chatBody');
+    const chatInput = document.getElementById('chatInput');
+
+    function toggleChatBox() {
+      if (chatBoxModal.style.display === 'flex') {
+        chatBoxModal.style.display = 'none';
+      } else {
+        chatBoxModal.style.display = 'flex';
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    }
+
+    function appendMessage(text, sender) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${sender}`;
+      msgDiv.innerText = text;
+      chatBody.appendChild(msgDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function getBotResponse(userText) {
+      let text = userText.toLowerCase();
+      let reply = "ধন্যবাদ আপনার বার্তার জন্য! আমাদের প্রতিনিধি খুব শীঘ্রই আপনার সাথে যোগাযোগ করবেন। বিস্তারিত জানতে উপরের কার্ডগুলোতে ক্লিক করতে পারেন।";
+
+      if (text.includes('সার্ভিস') || text.includes('service') || text.includes('কাজ')) {
+        reply = "আমরা ওয়েবসাইট ডিজাইন, গ্রাফিক ডিজাইন, এআই অটোমেশন, ডিজিটাল মার্কেটিং এবং ডেটা এন্ট্রি সার্ভিস দিয়ে থাকি।";
+      } else.includes('সময়') || text.includes('deliver') || text.includes('ডেলিভারি')) {
+        reply = "আমরা ২৪ ঘণ্টার মধ্যে অত্যন্ত দ্রুততার সাথে মানসম্মত কাজ সম্পন্ন করে থাকি।";
+      } else if (text.includes('যোগাযোগ') || text.includes('contact') || text.includes('কথা')) {
+        reply = "আপনি সরাসরি আমাদের এই চ্যাট বক্সের মাধ্যমে অথবা মেনু থেকে যোগাযোগ অপশনে গিয়ে কথা বলতে পারেন।";
+      } else if (text.includes('hi') || text.includes('hello') || text.includes('হ্যালো')) {
+        reply = "হ্যালো! Tusher BD-তে আপনাকে স্বাগতম। আজ আপনাকে কীভাবে সাহায্য করতে পারি?";
+      }
+
+      setTimeout(() => {
+        appendMessage(reply, 'bot');
+      }, 500);
+    }
+
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (text === '') return;
+
+      appendMessage(text, 'user');
+      chatInput.value = '';
+      getBotResponse(text);
+    }
+
+    function sendSuggestion(text) {
+      appendMessage(text, 'user');
+      getBotResponse(text);
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
     }
 
     window.onclick = function(event) {
