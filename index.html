@@ -104,7 +104,7 @@
       background: #e2e8f0;
     }
 
-    /* Slide Navigation Drawer */
+    /* Slide Navigation Drawer (Fixed) */
     .nav-drawer {
       position: fixed;
       top: 0;
@@ -286,7 +286,7 @@
       border-radius: 10px;
     }
 
-    /* AI Agent Button */
+    /* AI Agent Section */
     .ai-agent-section {
       padding: 15px;
     }
@@ -480,10 +480,10 @@
     <div class="nav-drawer" id="navDrawer">
       <button class="close-btn" id="closeMenu">&times;</button>
       <ul class="drawer-menu">
-        <li><a href="#"><i class="fa-solid fa-house"></i> হোম (Home)</a></li>
-        <li><a href="#"><i class="fa-solid fa-briefcase"></i> সার্ভিসসমূহ</a></li>
-        <li><a href="#"><i class="fa-solid fa-robot"></i> এ আই এজেন্ট</a></li>
-        <li><a href="#"><i class="fa-solid fa-phone"></i> যোগাযোগ</a></li>
+        <li><a href="#" onclick="closeMenuDrawer()"><i class="fa-solid fa-house"></i> হোম (Home)</a></li>
+        <li><a href="#" onclick="closeMenuDrawer(); openModal('সার্ভিসসমূহ', 'আমরা ওয়েবসাইট ডিজাইন, গ্রাফিক ডিজাইন, এআই অটোমেশন এবং ডিজিটাল মার্কেটিং সার্ভিস দিয়ে থাকি।')"><i class="fa-solid fa-briefcase"></i> সার্ভিসসমূহ</a></li>
+        <li><a href="#" onclick="closeMenuDrawer(); openModal('এ আই এজেন্ট', 'আমাদের AI এজেন্ট আপনার ব্যবসার জন্য স্বয়ংক্রিয় কাস্টমার সাপোর্ট প্রদান করতে প্রস্তুত।')"><i class="fa-solid fa-robot"></i> এ আই এজেন্ট</a></li>
+        <li><a href="#" onclick="closeMenuDrawer(); openModal('যোগাযোগ', 'যেকোনো প্রয়োজনে আমাদের চ্যাট অপশন বা সরাসরি যোগাযোগ করুন।')"><i class="fa-solid fa-phone"></i> যোগাযোগ</a></li>
       </ul>
     </div>
     <div class="overlay" id="overlay"></div>
@@ -502,7 +502,7 @@
             <div class="serv-box"><i class="fa-solid fa-palette"></i>Graphic Design</div>
             <div class="serv-box"><i class="fa-solid fa-keyboard"></i>Data Entry</div>
           </div>
-          <a href="#" class="order-btn" onclick="openModal('অর্ডার তথ্য', 'অর্ডার করতে সরাসরি আমাদের চ্যাট অপশন ব্যবহার করুন।')">Order Now <i class="fa-solid fa-circle-arrow-right"></i></a>
+          <a href="javascript:void(0)" class="order-btn" onclick="openModal('অর্ডার তথ্য', 'অর্ডার করতে সরাসরি আমাদের চ্যাট অপশন ব্যবহার করুন।')">Order Now <i class="fa-solid fa-circle-arrow-right"></i></a>
         </div>
         <!-- Slide 2 -->
         <div class="slide">
@@ -515,7 +515,7 @@
             <div class="serv-box"><i class="fa-solid fa-code"></i>Web Dev</div>
             <div class="serv-box"><i class="fa-solid fa-magnifying-glass"></i>SEO</div>
           </div>
-          <a href="#" class="order-btn" onclick="openModal('অর্ডার তথ্য', 'অর্ডার করতে সরাসরি আমাদের চ্যাট অপশন ব্যবহার করুন।')">Order Now <i class="fa-solid fa-circle-arrow-right"></i></a>
+          <a href="javascript:void(0)" class="order-btn" onclick="openModal('অর্ডার তথ্য', 'অর্ডার করতে সরাসরি আমাদের চ্যাট অপশন ব্যবহার করুন।')">Order Now <i class="fa-solid fa-circle-arrow-right"></i></a>
         </div>
       </div>
       <div class="dots">
@@ -599,26 +599,24 @@
   </div>
 
   <script>
-    // Navigation Drawer Logic
+    // Navigation Drawer Logic (Fixed)
     const openMenu = document.getElementById('openMenu');
     const closeMenu = document.getElementById('closeMenu');
     const navDrawer = document.getElementById('navDrawer');
     const overlay = document.getElementById('overlay');
+
+    function closeMenuDrawer() {
+      navDrawer.classList.remove('active');
+      overlay.classList.remove('active');
+    }
 
     openMenu.addEventListener('click', () => {
       navDrawer.classList.add('active');
       overlay.classList.add('active');
     });
 
-    closeMenu.addEventListener('click', () => {
-      navDrawer.classList.remove('active');
-      overlay.classList.remove('active');
-    });
-
-    overlay.addEventListener('click', () => {
-      navDrawer.classList.remove('active');
-      overlay.classList.remove('active');
-    });
+    closeMenu.addEventListener('click', closeMenuDrawer);
+    overlay.addEventListener('click', closeMenuDrawer);
 
     // Banner Slider Logic
     let currentSlide = 0;
@@ -640,7 +638,7 @@
       goToSlide(currentSlide);
     }, 4000);
 
-    // Modal Popup Logic
+    // Modal Popup Logic (Fixed for all clicks)
     const modal = document.getElementById('infoModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
