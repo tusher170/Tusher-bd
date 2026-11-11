@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tusher BD - Your Digital Solution</title>
-  <!-- Google Fonts & Font Awesome Icons -->
+  <!-- Font & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -43,13 +43,11 @@
       overflow-x: hidden;
     }
 
-    /* Top Pink Gradient Line */
     .top-bar {
       height: 4px;
       background: linear-gradient(90deg, #ed4899, #8b5cf6, #3b82f6);
     }
 
-    /* Header Structure */
     header {
       display: flex;
       justify-content: space-between;
@@ -106,7 +104,6 @@
       justify-content: center;
     }
 
-    /* Functional Slide Navigation Menu */
     .nav-drawer {
       position: fixed;
       top: 0;
@@ -174,7 +171,6 @@
       display: block;
     }
 
-    /* Graphic Banner matching the image */
     .banner-graphic {
       width: 100%;
       background: linear-gradient(135deg, #071330 0%, #0c2656 50%, #0284c7 100%);
@@ -256,7 +252,6 @@
       box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);
     }
 
-    /* Blue Partner Button */
     .partner-section {
       padding: 16px 16px 8px 16px;
     }
@@ -279,7 +274,6 @@
       transform: scale(0.98);
     }
 
-    /* Feature Grid (Cards matching original UI) */
     .features-container {
       padding: 15px 20px;
     }
@@ -308,7 +302,6 @@
       margin: 0 auto;
     }
 
-    /* Circular Colored Icon Wrappers */
     .icon-circle {
       width: 65px;
       height: 65px;
@@ -338,7 +331,6 @@
       color: #64748b;
     }
 
-    /* Floating Green Live Chat Button */
     .chat-widget-btn {
       position: fixed;
       bottom: 20px;
@@ -359,11 +351,6 @@
       transition: transform 0.2s;
     }
 
-    .chat-widget-btn:hover {
-      transform: scale(1.05);
-    }
-
-    /* Modal Popup Dialog */
     .modal {
       position: fixed;
       top: 0;
@@ -417,10 +404,8 @@
 
   <div class="app-container">
     
-    <!-- Top Gradient Bar -->
     <div class="top-bar"></div>
 
-    <!-- Header -->
     <header>
       <div class="brand">
         <div class="logo-icon">T</div>
@@ -432,7 +417,6 @@
       <button class="menu-btn" id="openMenu"><i class="fa-solid fa-bars"></i></button>
     </header>
 
-    <!-- Slide Navigation Menu -->
     <div class="nav-drawer" id="navDrawer">
       <button class="close-btn" id="closeMenu">&times;</button>
       <ul class="drawer-menu">
@@ -444,7 +428,6 @@
     </div>
     <div class="overlay" id="overlay"></div>
 
-    <!-- Main Graphic Banner -->
     <div class="banner-graphic">
       <div class="crown-icon"><i class="fa-solid fa-crown"></i></div>
       <h2>TUSHER BD</h2>
@@ -459,18 +442,15 @@
       <a href="javascript:void(0)" class="banner-order-btn" onclick="openModal('অর্ডার করতে', 'আমাদের চ্যাট অপশনে বার্তা পাঠাতে পারেন।')">Order Now <i class="fa-solid fa-circle-arrow-right"></i></a>
     </div>
 
-    <!-- Blue Button Section -->
     <div class="partner-section">
       <button class="partner-btn" onclick="openModal('আপনার ডিজিটাল কাজের বিশ্বস্ত পার্টনার', 'আমরা সততা ও নিষ্ঠার সাথে মানসম্মত সার্ভিস প্রদান করতে প্রতিশ্রুতিবদ্ধ।')">
         আপনার ডিজিটাল কাজের বিশ্বস্ত পার্টনার
       </button>
     </div>
 
-    <!-- Feature Cards Grid (All 5 Cards Working) -->
     <div class="features-container">
       <div class="features-grid">
         
-        <!-- Card 1 -->
         <div class="feature-card" onclick="openModal('দ্রুত ডেলিভারি', 'আমরা যেকোনো কাজ নির্ধারিত সময়ের মধ্যেই সম্পন্ন করি।')">
           <div class="icon-circle circle-blue">
             <i class="fa-solid fa-bolt"></i>
@@ -479,7 +459,6 @@
           <p>সময়মতো কাজ সম্পন্ন</p>
         </div>
 
-        <!-- Card 2 -->
         <div class="feature-card" onclick="openModal('নিরাপদ লেনদেন', 'আপনার তথ্যের শতভাগ সুরক্ষা প্রদান করা আমাদের দায়িত্ব।')">
           <div class="icon-circle circle-green">
             <i class="fa-solid fa-hexagon-nodes"></i>
@@ -488,7 +467,6 @@
           <p>তথ্যের গোপনীয়তা</p>
         </div>
 
-        <!-- Card 3 -->
         <div class="feature-card" onclick="openModal('সহায়তা', 'যে কোনো ধরনের সহযোগিতার জন্য আমরা সর্বদা পাশে আছি।')">
           <div class="icon-circle circle-purple">
             <i class="fa-solid fa-clover"></i>
@@ -497,7 +475,6 @@
           <p>প্রয়োজনে যোগাযোগ</p>
         </div>
 
-        <!-- Card 4 -->
         <div class="feature-card" onclick="openModal('মানসম্মত কাজ', 'বিস্তারিত যত্ন সহকারে কাজ শেষ করা হয়।')">
           <div class="icon-circle circle-yellow">
             <i class="fa-solid fa-star"></i>
@@ -506,7 +483,6 @@
           <p>বিস্তারিত যত্নসহকারে</p>
         </div>
 
-        <!-- Card 5 -->
         <div class="feature-card card-full" onclick="openModal('গ্রাহক সন্তুষ্টি', 'আপনার সন্তুষ্টিই আমাদের প্রধান লক্ষ্য।')">
           <div class="icon-circle circle-pink">
             <i class="fa-solid fa-heart"></i>
@@ -518,12 +494,10 @@
       </div>
     </div>
 
-    <!-- Floating Chat Button -->
     <button class="chat-widget-btn" onclick="openModal('Tusher BD Chat', 'লাইভ চ্যাটের জন্য ধন্যবাদ! কিভাবে সাহায্য করতে পারি?')">
       <i class="fa-solid fa-comment-dots"></i> Tusher BD Chat
     </button>
 
-    <!-- Modal Dialog -->
     <div class="modal" id="infoModal">
       <div class="modal-content">
         <div class="modal-title" id="modalTitle">শিরোনাম</div>
@@ -535,7 +509,6 @@
   </div>
 
   <script>
-    // Navigation Menu Drawer Logic
     const openMenu = document.getElementById('openMenu');
     const closeMenu = document.getElementById('closeMenu');
     const navDrawer = document.getElementById('navDrawer');
@@ -554,7 +527,6 @@
     closeMenu.addEventListener('click', closeMenuDrawer);
     overlay.addEventListener('click', closeMenuDrawer);
 
-    // Modal Popup Logic
     const modal = document.getElementById('infoModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
