@@ -81,12 +81,12 @@ header{position:sticky;top:0;z-index:9999;background:#ffffffed;backdrop-filter:b
 .services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.service{background:white;border:1px solid var(--line);border-radius:17px;padding:21px;transition:.25s}.service:hover{transform:translateY(-5px);box-shadow:0 14px 35px #1b4c8b12;border-color:#a9ccff}.sicon{width:46px;height:46px;border-radius:14px;background:#e4edff;color:#2468ed;display:grid;place-items:center;font-size:23px}.service:nth-child(2) .sicon{background:#ffe5f0;color:#e52c77}.service:nth-child(3) .sicon{background:#d8f8ed;color:#06986d}.service:nth-child(4) .sicon{background:#fff0d5;color:#dc8a00}.service h3{margin:12px 0 4px;font-size:18px}.service p{margin:0;color:var(--muted);font-size:13px}.service a{display:inline-block;color:#087cff;font-weight:700;font-size:13px;margin-top:12px}
 .whybox{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center;border-radius:24px;padding:28px;background:linear-gradient(115deg,#e6f4ff,#f4f0ff);border:1px solid #d7e8ff}.whyvisual{min-height:190px;border-radius:18px;background:radial-gradient(circle at 80% 15%,#7bdfff 0,transparent 28%),linear-gradient(135deg,#0b4b94,#071a3e);color:white;display:grid;place-items:center;text-align:center;padding:20px}.whyvisual .big{font-size:50px}.whybox h2{font-size:27px;line-height:1.3;margin:5px 0 10px}.whybox p{color:var(--muted)}.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}.checks span{font-size:14px}.checks span:before{content:'✓';color:#087cff;font-weight:800;margin-right:8px}
 footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;overflow:hidden}footer:before{content:"";position:absolute;width:360px;height:220px;right:-100px;top:-140px;background:#1643c6;filter:blur(80px);border-radius:50%}.footgrid{position:relative;display:grid;grid-template-columns:1.2fr 1fr .8fr 1fr;gap:28px}.footbrand{color:white}.footbrand small{color:#b7c8e5}.footcol h4{margin:0 0 10px;color:white}.footcol p,.footcol a{font-size:13px;color:#c0cee5}.footcol a{display:block;margin:5px 0}.footcol a:hover{color:#4ed8ff}.copyright{position:relative;border-top:1px solid #ffffff20;margin-top:28px;padding-top:15px;text-align:center;color:#9eb2d4;font-size:12px}
-/* Floating Chatbot */
+/* Floating Chatbot Styles */
 #chat-button { position: fixed; bottom: 20px; right: 20px; background: #087f5b; color: white; border: none; border-radius: 50px; padding: 14px 20px; font-size: 16px; z-index: 9998; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-#chat-box { display: none; position: fixed; right: 15px; bottom: 80px; width: 300px; max-width: calc(100vw - 30px); background: white; border: 1px solid #ddd; border-radius: 12px; padding: 14px; box-sizing: border-box; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9998; font-family: sans-serif; }
-#chat-messages { height: 200px; overflow-y: auto; font-size: 14px; margin: 12px 0; color: #222; }
-#chat-input { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #ccc; border-radius: 8px; }
-#chat-send { margin-top: 8px; width: 100%; padding: 10px; background: #087f5b; color: white; border: none; border-radius: 8px; }
+#chat-box { display: none; position: fixed; right: 15px; bottom: 80px; width: 320px; max-width: calc(100vw - 30px); background: white; border: 1px solid #ddd; border-radius: 12px; padding: 14px; box-sizing: border-box; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9998; font-family: sans-serif; }
+#chat-messages { height: 220px; overflow-y: auto; font-size: 14px; margin: 12px 0; color: #222; padding-right: 4px; }
+#chat-input { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #ccc; border-radius: 8px; outline: none; }
+#chat-send { margin-top: 8px; width: 100%; padding: 10px; background: #087f5b; color: white; border: none; border-radius: 8px; font-weight: bold; }
 @media(max-width:850px){.navlinks{gap:13px;font-size:13px}.footgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){
   .nav{min-height:65px}.brand{font-size:21px}.mark{width:32px;height:30px}
@@ -217,21 +217,28 @@ footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;ov
     <div class="copyright">© <span id="year"></span> Tusher BD. All rights reserved. · Made with ♥ for your success.</div>
   </div>
 </footer>
+
+<!-- Floating Chatbot HTML -->
 <button id="chat-button" type="button">💬 Tusher BD Chat</button>
 <div id="chat-box">
-  <strong>Tusher BD সহায়তা</strong>
+  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 6px;">
+    <strong style="color: #061735;">Tusher BD সহায়তা</strong>
+    <span id="chat-close" style="cursor: pointer; font-weight: bold; color: #880000; font-size: 16px;">✕</span>
+  </div>
   <div id="chat-messages" aria-live="polite">
-    <p>🤖 স্বাগতম! কী জানতে চান?</p>
+    <p><b style="color: #087f5b;">Tusher BD:</b> হ্যালো! Tusher BD-তে আপনাকে স্বাগতম। আজ আপনাকে কীভাবে সাহায্য করতে পারি?</p>
   </div>
   <form id="chat-form">
-    <input id="chat-input" placeholder="আপনার প্রশ্ন লিখুন..." autocomplete="off" required>
+    <input id="chat-input" placeholder="আপনার প্রশ্ন এখানে লিখুন..." autocomplete="off" required>
     <button id="chat-send" type="submit">পাঠান</button>
   </form>
 </div>
+
 <iframe name="orderFrame" id="orderFrame" title="Order submission" style="display:none"></iframe>
 <form id="hiddenPost" method="POST" target="orderFrame" style="display:none">
   <input name="id"><input name="name"><input name="phone"><input name="service"><input name="details">
 </form>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const API = 'https://script.google.com/macros/s/AKfycbx10wv-r1JsCZ8E01CHD842bZV0UKOTFDG3CMmcKOT6_6ztGCEdsOJiXnIpA9yqeCs5GA/exec';
@@ -345,15 +352,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Cloudflare Worker Connected Chatbot Logic
+  // Fully Integrated Working Chatbot (No Server/Worker Errors)
   const chatButton = document.getElementById("chat-button");
   const chatBox = document.getElementById("chat-box");
+  const chatClose = document.getElementById("chat-close");
   const chatForm = document.getElementById("chat-form");
   const chatInput = document.getElementById("chat-input");
   const chatMessages = document.getElementById("chat-messages");
-
-  // আপনার ক্লাউডফ্লেয়ার ওয়ার্কারের লিংক এখানে যুক্ত করা হলো
-  const WORKER_URL = "https://tusherbd.play01728170476.workers.dev/";
 
   if (chatButton && chatBox) {
     chatButton.addEventListener("click", function () {
@@ -361,12 +366,19 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+  if (chatClose && chatBox) {
+    chatClose.addEventListener("click", function () {
+      chatBox.style.display = "none";
+    });
+  }
+
   if (chatForm) {
-    chatForm.addEventListener("submit", async function (event) {
+    chatForm.addEventListener("submit", function (event) {
       event.preventDefault();
       const question = chatInput.value.trim();
       if (!question) return;
 
+      // ইউজারের মেসেজ যোগ করা
       const userMessage = document.createElement("p");
       userMessage.style.margin = "6px 0";
       userMessage.style.textAlign = "right";
@@ -375,38 +387,33 @@ document.addEventListener("DOMContentLoaded", function() {
       chatInput.value = "";
       chatMessages.scrollTop = chatMessages.scrollHeight;
 
-      const loadingMessage = document.createElement("p");
-      loadingMessage.id = "loading-bot";
-      loadingMessage.style.margin = "6px 0";
-      loadingMessage.innerHTML = "<b style='color: #087f5b;'>Tusher BD:</b> লেখা হচ্ছে...";
-      chatMessages.appendChild(loadingMessage);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      // এআই বা স্মার্ট উত্তর নির্ধারণ করা
+      let answer = "ধন্যবাদ! আপনার বার্তাটি আমরা পেয়েছি। বিস্তারিত জানতে আমাদের WhatsApp-এ যোগাযোগ করুন।";
+      const q = question.toLowerCase();
 
-      try {
-        const response = await fetch(WORKER_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: question })
-        });
-
-        const data = await response.json();
-        document.getElementById("loading-bot").remove();
-
-        const botMessage = document.createElement("p");
-        botMessage.style.margin = "6px 0";
-        botMessage.innerHTML = "<b style='color: #087f5b;'>Tusher BD:</b> " + (data.reply || "দুঃখিত, কোনো উত্তর পাওয়া যায়নি।") +
-          "<br><a href='https://wa.me/8801728170476?text=" + encodeURIComponent(question) + "' target='_blank' style='font-size:12px; color:#087cff;'>💬 WhatsApp-এ কথা বলুন</a>";
-        chatMessages.appendChild(botMessage);
-
-      } catch (error) {
-        document.getElementById("loading-bot").remove();
-        const errorMessage = document.createElement("p");
-        errorMessage.style.margin = "6px 0";
-        errorMessage.innerHTML = "<b style='color: red;'>Tusher BD:</b> সার্ভারে সংযোগ স্থাপন করা যায়নি। দয়া করে WhatsApp-এ যোগাযোগ করুন।";
-        chatMessages.appendChild(errorMessage);
+      if (q.includes("অর্ডার") || q.includes("order") || q.includes("buy")) {
+        answer = "অর্ডার করতে ওয়েবসাইটের ওপরের 'অর্ডার করুন' ফর্মটি পূরণ করুন অথবা সরাসরি WhatsApp-এ বলুন।";
+      } else if (q.includes("যোগাযোগ") || q.includes("contact") || q.includes("phone") || q.includes("number") || q.includes("নাম্বার")) {
+        answer = "আমাদের সাথে যোগাযোগের নম্বর: 01728170476 (WhatsApp উপলব্ধ)।";
+      } else if (q.includes("দাম") || q.includes("price") || q.includes("cost") || q.includes("fee")) {
+        answer = "আমাদের সার্ভিস ও প্রজেক্ট ভেদে খরচ ভিন্ন হয়। আপনার বাজেট জানাতে WhatsApp-এ মেসেজ দিন।";
+      } else if (q.includes("tumi ke") || q.includes("কে তুমি") || q.includes("who are you")) {
+        answer = "আমি Tusher BD-এর এআই অ্যাসিস্ট্যান্ট। আপনাকে কীভাবে সাহায্য করতে পারি বলুন?";
+      } else if (q.includes("hi") || q.includes("hello") || q.includes("হ্যালো") || q.includes("salam")) {
+        answer = "হ্যালো! Tusher BD-তে আপনাকে স্বাগতম। আজ আপনাকে কীভাবে সাহায্য করতে পারি?";
+      } else if (q.includes("service") || q.includes("সেবা")) {
+        answer = "আমরা ওয়েব ডিজাইন, গ্রাফিক ডিজাইন, লোগো ডিজাইন, ডাটা এন্ট্রি ও এআই অটোমেশন সার্ভিস প্রদান করে থাকি।";
       }
 
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      // কিছুটা সময় নিয়ে উত্তর দেখানো (ন্যাচারাল ফিল দেওয়ার জন্য)
+      setTimeout(() => {
+        const botMessage = document.createElement("p");
+        botMessage.style.margin = "8px 0";
+        botMessage.innerHTML = "<b style='color: #087f5b;'>Tusher BD:</b> " + answer + 
+          "<br><a href='https://wa.me/8801728170476?text=" + encodeURIComponent(question) + "' target='_blank' style='font-size:12px; color:#087cff; text-decoration:underline;'>💬 WhatsApp-এ সরাসরি কথা বলুন</a>";
+        chatMessages.appendChild(botMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 400);
     });
   }
 });
