@@ -60,7 +60,29 @@ footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;ov
   .navlinks a{padding:12px 0;border-bottom:1px solid #edf2fa}
   .nav-cta{text-align:center;margin-top:10px}
   .benefitgrid{grid-template-columns:repeat(2,1fr);gap:14px}.benefit{border:0;border-bottom:1px solid #edf1f9;padding-bottom:14px}.benefit:last-child{grid-column:1/-1}.section{padding:45px 0}.ordergrid{grid-template-columns:1fr;gap:17px}.panel{padding:20px}.paneltitle h3{font-size:22px}.trackrow{flex-direction:column}.services{grid-template-columns:1fr 1fr;gap:11px}.service{padding:15px}.service h3{font-size:16px}.whybox{grid-template-columns:1fr;padding:18px;gap:16px}.whyvisual{min-height:140px}.checks{grid-template-columns:1fr}.footgrid{grid-template-columns:1fr 1fr;gap:22px}.footgrid>div:first-child{grid-column:1/-1}
-}
+} <!-- Sliding Skills Banner Start -->
+<div class="skills-marquee-wrapper">
+  <div class="skills-marquee-track">
+    <!-- মূল আইটেমগুলো -->
+    <span class="skill-badge color-1">Web Designer</span>
+    <span class="skill-badge color-2">Graphics Design</span>
+    <span class="skill-badge color-3">Logo Design</span>
+    <span class="skill-badge color-4">AI Automation</span>
+    
+    <!-- বিরতিহীন (Seamless) লুপের জন্য নিচের ডুপ্লিকেট অংশটি জরুরি -->
+    <span class="skill-badge color-1">Web Designer</span>
+    <span class="skill-badge color-2">Graphics Design</span>
+    <span class="skill-badge color-3">Logo Design</span>
+    <span class="skill-badge color-4">AI Automation</span>
+
+    <span class="skill-badge color-1">Web Designer</span>
+    <span class="skill-badge color-2">Graphics Design</span>
+    <span class="skill-badge color-3">Logo Design</span>
+    <span class="skill-badge color-4">AI Automation</span>
+  </div>
+</div>
+<!-- Sliding Skills Banner End -->
+  
 </style>
 </head>
 <body>
@@ -89,6 +111,75 @@ footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;ov
     </a>
   </div>
 </section>
+  /* স্লাইডার কন্টেইনার */
+.skills-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: #0f172a; /* ব্যাকগ্রাউন্ড কালার (আপনার থিম অনুযায়ী পরিবর্তন করতে পারেন) */
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+/* স্লাইডিং ট্র্যাক */
+.skills-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: slideLeft 18s linear infinite; /* 18s কমিয়ে বা বাড়িয়ে স্পিড নিয়ন্ত্রণ করুন */
+}
+
+/* মাউস নিলে স্লাইড থেমে যাবে */
+.skills-marquee-wrapper:hover .skills-marquee-track {
+  animation-play-state: paused;
+}
+
+/* প্রতিটি নামের ব্যাজ ডিজাইন */
+.skill-badge {
+  padding: 10px 26px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.skill-badge:hover {
+  transform: scale(1.05);
+}
+
+/* ৪টি ভিন্ন রঙের গ্রেডিয়েন্ট কালার */
+.color-1 {
+  background: linear-gradient(135deg, #3b82f6, #2563eb); /* নীল (Blue) */
+}
+
+.color-2 {
+  background: linear-gradient(135deg, #ec4899, #db2777); /* গোলাপি (Pink) */
+}
+
+.color-3 {
+  background: linear-gradient(135deg, #f59e0b, #d97706); /* কমলা (Orange) */
+}
+
+.color-4 {
+  background: linear-gradient(135deg, #10b981, #059669); /* সবুজ (Emerald Green) */
+}
+
+/* অ্যানিমেশন লজিক */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+  
 
 <section class="benefits">
   <div class="wrap benefitgrid">
