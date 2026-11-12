@@ -341,13 +341,109 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Self-contained Smart Chatbot Logic
+
+  // Tusher BD ChatGPT AI
+  const AI_API = "https://tusher-bd-ai.play01728170476.workers.dev/";
+
   const chatButton = document.getElementById("chat-button");
   const chatBox = document.getElementById("chat-box");
   const chatClose = document.getElementById("chat-close");
   const chatForm = document.getElementById("chat-form");
   const chatInput = document.getElementById("chat-input");
   const chatMessages = document.getElementById("chat-messages");
+  const chatSend = document.getElementById("chat-send");
+
+  const history = [];
+
+  function addMessage(text, role, question = "") {
+    const p = document.createElement("p");
+    p.style.cssText = "margin:8px 0;white-space:pre-wrap;";
+
+    const b = document.createElement("b");
+    b.style.color = role === "user" ? "#087cff" : "#087f5b";
+    b.textContent = role === "user" ? "আপনি: " : "Tusher BD: ";
+
+    p.appendChild(b);
+    p.appendChild(document.createTextNode(text));
+
+    if (role === "assistant") {
+      const a = document.createElement("a");
+      a.href = "https://wa.me/8801728170476?text=" +
+        encodeURIComponent(question || text);
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = " 💬 WhatsApp-এ যোগাযোগ";
+      a.style.cssText = "display:block;color:#087cff;font-size:12px;";
+      p.appendChild(a);
+    }
+
+    chatMessages.appendChild(p);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  chatButton.addEventListener("click", () => {
+    chatBox.style.display =
+      chatBox.style.display === "block" ? "none" : "block";
+  });
+
+  chatClose.addEventListener("click", () => {
+    chatBox.style.display = "none";
+  });
+
+  chatForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const question = chatInput.value.trim();
+    if (!question || chatSend.disabled) return;
+
+    addMessage(question, "user");
+    history.push({ role: "user", content: question });
+
+    chatInput.value = "";
+    chatSend.disabled = true;
+    chatSend.textContent = "অপেক্ষা করুন...";
+
+    const loading = document.createElement("p");
+    loading.textContent = "Tusher BD AI উত্তর দিচ্ছে...";
+    chatMessages.appendChild(loading);
+
+    try {
+      const response = await fetch(AI_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: history.slice(-12)
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok || !data.reply) {
+        throw new Error(data.error || "AI connection failed");
+      }
+
+      history.push({
+        role: "assistant",
+        content: data.reply
+      });
+
+      loading.remove();
+      addMessage(data.reply, "assistant", question);
+
+    } catch (error) {
+      loading.remove();
+      history.pop();
+
+      addMessage(
+        "দুঃখিত! AI সংযোগে সমস্যা হয়েছে। কিছুক্ষণ পর আবার চেষ্টা করুন।",
+        "assistant",
+        question
+      );
+    } finally {
+      chatSend.disabled = false;
+      chatSend.textContent = "পাঠান";
+    }
+  });
+
 
   if (chatButton && chatBox) {
     chatButton.addEventListener("click", function () {
