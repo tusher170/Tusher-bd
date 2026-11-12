@@ -31,7 +31,6 @@ header{position:sticky;top:0;z-index:9999;background:#ffffffed;backdrop-filter:b
   display: block;
   margin: 0 auto;
 }
-
 /* Sliding Skills Banner CSS */
 .skills-marquee-wrapper {
   width: 100%;
@@ -73,7 +72,6 @@ header{position:sticky;top:0;z-index:9999;background:#ffffffed;backdrop-filter:b
   0% { transform: translateX(0); }
   100% { transform: translateX(-33.33%); }
 }
-
 .benefits{background:white;padding:27px 0;border-bottom:1px solid #e9effa}.benefitgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .benefit{text-align:center;padding:8px;border-right:1px solid #edf1f9}.benefit:last-child{border:0}.bicon{width:54px;height:54px;margin:0 auto 8px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:#e2efff;color:#087cff}.benefit:nth-child(2) .bicon{background:#d9f9ed;color:#079a70}.benefit:nth-child(3) .bicon{background:#eee4ff;color:#823bff}.benefit:nth-child(4) .bicon{background:#fff0ce;color:#df8b00}.benefit:nth-child(5) .bicon{background:#ffe2ed;color:#e52c77}.benefit b{display:block}.benefit small{color:var(--muted);font-size:12px}
 .section{padding:62px 0}.heading{text-align:center;margin-bottom:30px}.eyebrow{color:#087cff;font-size:13px;font-weight:700}.heading h2{font-size:clamp(26px,3vw,36px);line-height:1.25;margin:7px 0}.heading p{color:var(--muted);margin:0}
@@ -81,12 +79,14 @@ header{position:sticky;top:0;z-index:9999;background:#ffffffed;backdrop-filter:b
 .services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.service{background:white;border:1px solid var(--line);border-radius:17px;padding:21px;transition:.25s}.service:hover{transform:translateY(-5px);box-shadow:0 14px 35px #1b4c8b12;border-color:#a9ccff}.sicon{width:46px;height:46px;border-radius:14px;background:#e4edff;color:#2468ed;display:grid;place-items:center;font-size:23px}.service:nth-child(2) .sicon{background:#ffe5f0;color:#e52c77}.service:nth-child(3) .sicon{background:#d8f8ed;color:#06986d}.service:nth-child(4) .sicon{background:#fff0d5;color:#dc8a00}.service h3{margin:12px 0 4px;font-size:18px}.service p{margin:0;color:var(--muted);font-size:13px}.service a{display:inline-block;color:#087cff;font-weight:700;font-size:13px;margin-top:12px}
 .whybox{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center;border-radius:24px;padding:28px;background:linear-gradient(115deg,#e6f4ff,#f4f0ff);border:1px solid #d7e8ff}.whyvisual{min-height:190px;border-radius:18px;background:radial-gradient(circle at 80% 15%,#7bdfff 0,transparent 28%),linear-gradient(135deg,#0b4b94,#071a3e);color:white;display:grid;place-items:center;text-align:center;padding:20px}.whyvisual .big{font-size:50px}.whybox h2{font-size:27px;line-height:1.3;margin:5px 0 10px}.whybox p{color:var(--muted)}.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}.checks span{font-size:14px}.checks span:before{content:'✓';color:#087cff;font-weight:800;margin-right:8px}
 footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;overflow:hidden}footer:before{content:"";position:absolute;width:360px;height:220px;right:-100px;top:-140px;background:#1643c6;filter:blur(80px);border-radius:50%}.footgrid{position:relative;display:grid;grid-template-columns:1.2fr 1fr .8fr 1fr;gap:28px}.footbrand{color:white}.footbrand small{color:#b7c8e5}.footcol h4{margin:0 0 10px;color:white}.footcol p,.footcol a{font-size:13px;color:#c0cee5}.footcol a{display:block;margin:5px 0}.footcol a:hover{color:#4ed8ff}.copyright{position:relative;border-top:1px solid #ffffff20;margin-top:28px;padding-top:15px;text-align:center;color:#9eb2d4;font-size:12px}
+
 /* Floating Chatbot Styles */
 #chat-button { position: fixed; bottom: 20px; right: 20px; background: #087f5b; color: white; border: none; border-radius: 50px; padding: 14px 20px; font-size: 16px; z-index: 9998; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 #chat-box { display: none; position: fixed; right: 15px; bottom: 80px; width: 320px; max-width: calc(100vw - 30px); background: white; border: 1px solid #ddd; border-radius: 12px; padding: 14px; box-sizing: border-box; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9998; font-family: sans-serif; }
 #chat-messages { height: 220px; overflow-y: auto; font-size: 14px; margin: 12px 0; color: #222; padding-right: 4px; }
 #chat-input { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #ccc; border-radius: 8px; outline: none; }
 #chat-send { margin-top: 8px; width: 100%; padding: 10px; background: #087f5b; color: white; border: none; border-radius: 8px; font-weight: bold; }
+
 @media(max-width:850px){.navlinks{gap:13px;font-size:13px}.footgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){
   .nav{min-height:65px}.brand{font-size:21px}.mark{width:32px;height:30px}
@@ -115,7 +115,6 @@ footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;ov
   </div>
 </header>
 <main>
-<!-- ব্যানার ইমেজ সেকশন -->
 <section class="hero" id="home">
   <div class="wrap">
     <a href="#order">
@@ -124,46 +123,33 @@ footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;ov
   </div>
 </section>
 
-<!-- Sliding Skills Banner Start -->
 <div class="skills-marquee-wrapper">
   <div class="skills-marquee-track">
     <span class="skill-badge color-1">Web Designer</span>
     <span class="skill-badge color-2">Graphics Design</span>
     <span class="skill-badge color-3">Logo Design</span>
     <span class="skill-badge color-4">AI Automation</span>
-    
     <span class="skill-badge color-1">Web Designer</span>
     <span class="skill-badge color-2">Graphics Design</span>
     <span class="skill-badge color-3">Logo Design</span>
     <span class="skill-badge color-4">AI Automation</span>
-
     <span class="skill-badge color-1">Web Designer</span>
     <span class="skill-badge color-2">Graphics Design</span>
     <span class="skill-badge color-3">Logo Design</span>
     <span class="skill-badge color-4">AI Automation</span>
   </div>
 </div>
-<!-- Sliding Skills Banner End -->
 
 <section class="benefits">
   <div class="wrap benefitgrid">
-    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;">
-      <div class="bicon">ϟ</div><b>দ্রুত ডেলিভারি</b><small>সময়মতো কাজ সম্পন্ন</small>
-    </a>
-    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;">
-      <div class="bicon">⬡</div><b>নিরাপদ লেনদেন</b><small>তথ্যের গোপনীয়তা</small>
-    </a>
-    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;">
-      <div class="bicon">♧</div><b>সহায়তা</b><small>প্রয়োজনে যোগাযোগ</small>
-    </a>
-    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;">
-      <div class="bicon">★</div><b>মানসম্মত কাজ</b><small>বিস্তারিত যত্নসহকারে</small>
-    </a>
-    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;">
-      <div class="bicon">♡</div><b>গ্রাহক সন্তুষ্টি</b><small>আপনার সন্তুষ্টিই লক্ষ্য</small>
-    </a>
+    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;"><div class="bicon">ϟ</div><b>দ্রুত ডেলিভারি</b><small>সময়মতো কাজ সম্পন্ন</small></a>
+    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;"><div class="bicon">⬡</div><b>নিরাপদ লেনদেন</b><small>তথ্যের গোপনীয়তা</small></a>
+    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;"><div class="bicon">♧</div><b>সহায়তা</b><small>প্রয়োজনে যোগাযোগ</small></a>
+    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;"><div class="bicon">★</div><b>মানসম্মত কাজ</b><small>বিস্তারিত যত্নসহকারে</small></a>
+    <a href="#order" class="benefit" style="text-decoration: none; color: inherit; display: block;"><div class="bicon">♡</div><b>গ্রাহক সন্তুষ্টি</b><small>আপনার সন্তুষ্টিই লক্ষ্য</small></a>
   </div>
 </section>
+
 <section class="section" id="order">
   <div class="wrap ordergrid">
     <div class="panel formpanel">
@@ -188,6 +174,7 @@ footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;ov
     </div>
   </div>
 </section>
+
 <section class="section" id="services" style="padding-top:12px">
   <div class="wrap">
     <div class="heading"><span class="eyebrow">আমাদের সেবা সমূহ</span><h2>আপনার প্রয়োজন অনুযায়ী <span class="grad">বেছে নিন</span></h2><p>আপনার ডিজিটাল কাজের জন্য সহজ ও নির্ভরযোগ্য সমাধান।</p></div>
@@ -199,6 +186,7 @@ footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;ov
     </div>
   </div>
 </section>
+
 <section class="section" id="why" style="padding-top:0">
   <div class="wrap whybox">
     <div class="whyvisual"><div><div class="big">✦</div><h3>Big Dreams.<br>Better Results.</h3><span>Let's build something great.</span></div></div>
@@ -206,6 +194,7 @@ footer{background:#04142f;color:#e8f1ff;padding:42px 0 18px;position:relative;ov
   </div>
 </section>
 </main>
+
 <footer>
   <div class="wrap">
     <div class="footgrid">
@@ -352,34 +341,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  <footer>
-  <div class="wrap">
-    <div class="copyright">© <span id="year"></span> Tusher BD. All rights reserved.</div>
-  </div>
-</footer>
-
-<!-- Floating Chatbot HTML -->
-<button id="chat-button" type="button">💬 Tusher BD Chat</button>
-<div id="chat-box">
-  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 6px;">
-    <strong style="color: #061735;">Tusher BD সহায়তা</strong>
-    <span id="chat-close" style="cursor: pointer; font-weight: bold; color: #880000; font-size: 16px;">✕</span>
-  </div>
-  <div id="chat-messages" aria-live="polite">
-    <p><b style='color: #087f5b;'>Tusher BD:</b> হ্যালো! Tusher BD-তে আপনাকে স্বাগতম। আজ আপনাকে কীভাবে সাহায্য করতে পারি?</p>
-  </div>
-  <form id="chat-form">
-    <input id="chat-input" placeholder="আপনার প্রশ্ন এখানে লিখুন..." autocomplete="off" required>
-    <button id="chat-send" type="submit">পাঠান</button>
-  </form>
-</div>
-
-<!-- এই <script> ট্যাগের ভেতরের অংশটি বসাতে হবে -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // আপনার ওয়েবসাইটের অন্যান্য কোড...
-
-  // নতুন স্বয়ংক্রিয় চ্যাটবট কোডটি এখানে বসবে
+  // Self-contained Smart Chatbot Logic
   const chatButton = document.getElementById("chat-button");
   const chatBox = document.getElementById("chat-box");
   const chatClose = document.getElementById("chat-close");
@@ -416,86 +378,20 @@ document.addEventListener("DOMContentLoaded", function() {
       let answer = "ধন্যবাদ আপনার বার্তার জন্য! বিস্তারিত জানতে নিচে WhatsApp-এ ক্লিক করতে পারেন।";
       const q = question.toLowerCase();
 
-      if (q.includes("কে") || q.includes("tumi ke") || q.includes("who are you")) {
+      if (q.includes("কে") || q.includes("tumi ke") || q.includes("who are you") || q.includes("পরিচয়")) {
         answer = "আমি Tusher BD-এর এআই অ্যাসিস্ট্যান্ট। আপনাকে কীভাবে সাহায্য করতে পারি বলুন?";
-      } else if (q.includes("অর্ডার") || q.includes("order")) {
-        answer = "অর্ডার করতে ওয়েবসাইটের ওপরের 'অর্ডার করুন' ফর্মটি পূরণ করুন।";
-      } else if (q.includes("যোগাযোগ") || q.includes("contact") || q.includes("phone")) {
-        answer = "আমাদের সাথে যোগাযোগের নম্বর: 01728170476 (WhatsApp উপলব্ধ)।";
-      } else if (q.includes("দাম") || q.includes("price") || q.includes("cost")) {
-        answer = "আমাদের সার্ভিস ভেদে খরচ ভিন্ন হয়। বিস্তারিত জানতে WhatsApp-এ মেসেজ দিন।";
-      } else if (q.includes("hi") || q.includes("hello") || q.includes("হ্যালো")) {
-        answer = "হ্যালো! Tusher BD-তে আপনাকে স্বাগতম। আজ আপনাকে কীভাবে সাহায্য করতে পারি?";
-      }
-
-      setTimeout(() => {
-        const botMessage = document.createElement("p");
-        botMessage.style.margin = "8px 0";
-        botMessage.innerHTML = "<b style='color: #087f5b;'>Tusher BD:</b> " + answer + 
-          "<br><a href='https://wa.me/8801728170476?text=" + encodeURIComponent(question) + "' target='_blank' style='font-size:12px; color:#087cff; text-decoration:underline;'>💬 WhatsApp-এ সরাসরি কথা বলুন</a>";
-        chatMessages.appendChild(botMessage);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }, 400);
-    });
-  }
-});
-</script>
-</body>
-</html>
-// Fully Integrated Working Chatbot (No Server/Worker Errors)
-  const chatButton = document.getElementById("chat-button");
-  const chatBox = document.getElementById("chat-box");
-  const chatClose = document.getElementById("chat-close");
-  const chatForm = document.getElementById("chat-form");
-  const chatInput = document.getElementById("chat-input");
-  const chatMessages = document.getElementById("chat-messages");
-
-  if (chatButton && chatBox) {
-    chatButton.addEventListener("click", function () {
-      chatBox.style.display = chatBox.style.display === "block" ? "none" : "block";
-    });
-  }
-
-  if (chatClose && chatBox) {
-    chatClose.addEventListener("click", function () {
-      chatBox.style.display = "none";
-    });
-  }
-
-  if (chatForm) {
-    chatForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      const question = chatInput.value.trim();
-      if (!question) return;
-
-      // ইউজারের মেসেজ যোগ করা
-      const userMessage = document.createElement("p");
-      userMessage.style.margin = "6px 0";
-      userMessage.style.textAlign = "right";
-      userMessage.innerHTML = "<b style='color: #087cff;'>আপনি:</b> " + question;
-      chatMessages.appendChild(userMessage);
-      chatInput.value = "";
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      // এআই বা স্মার্ট উত্তর নির্ধারণ করা
-      let answer = "ধন্যবাদ! আপনার বার্তাটি আমরা পেয়েছি। বিস্তারিত জানতে আমাদের WhatsApp-এ যোগাযোগ করুন।";
-      const q = question.toLowerCase();
-
-      if (q.includes("অর্ডার") || q.includes("order") || q.includes("buy")) {
+      } else if (q.includes("অর্ডার") || q.includes("order") || q.includes("buy") || q.includes("কিনব")) {
         answer = "অর্ডার করতে ওয়েবসাইটের ওপরের 'অর্ডার করুন' ফর্মটি পূরণ করুন অথবা সরাসরি WhatsApp-এ বলুন।";
       } else if (q.includes("যোগাযোগ") || q.includes("contact") || q.includes("phone") || q.includes("number") || q.includes("নাম্বার")) {
         answer = "আমাদের সাথে যোগাযোগের নম্বর: 01728170476 (WhatsApp উপলব্ধ)।";
-      } else if (q.includes("দাম") || q.includes("price") || q.includes("cost") || q.includes("fee")) {
-        answer = "আমাদের সার্ভিস ও প্রজেক্ট ভেদে খরচ ভিন্ন হয়। আপনার বাজেট জানাতে WhatsApp-এ মেসেজ দিন।";
-      } else if (q.includes("tumi ke") || q.includes("কে তুমি") || q.includes("who are you")) {
-        answer = "আমি Tusher BD-এর এআই অ্যাসিস্ট্যান্ট। আপনাকে কীভাবে সাহায্য করতে পারি বলুন?";
-      } else if (q.includes("hi") || q.includes("hello") || q.includes("হ্যালো") || q.includes("salam")) {
+      } else if (q.includes("দাম") || q.includes("price") || q.includes("cost") || q.includes("fee") || q.includes("খরচ")) {
+        answer = "আমাদের সার্ভিস ভেদে খরচ ভিন্ন হয়। বিস্তারিত জানতে WhatsApp-এ মেসেজ দিন।";
+      } else if (q.includes("hi") || q.includes("hello") || q.includes("হ্যালো") || q.includes("সালাম") || q.includes("salam")) {
         answer = "হ্যালো! Tusher BD-তে আপনাকে স্বাগতম। আজ আপনাকে কীভাবে সাহায্য করতে পারি?";
-      } else if (q.includes("service") || q.includes("সেবা")) {
-        answer = "আমরা ওয়েব ডিজাইন, গ্রাফিক ডিজাইন, লোগো ডিজাইন, ডাটা এন্ট্রি ও এআই অটোমেশন সার্ভিস প্রদান করে থাকি।";
+      } else if (q.includes("service") || q.includes("সেবা") || q.includes("কাজ")) {
+        answer = "আমরা ওয়েব ডিজাইন, গ্রাফিক ডিজাইন, লোগো ডিজাইন ও ডাটা এন্ট্রি সার্ভিস প্রদান করে থাকি।";
       }
 
-      // কিছুটা সময় নিয়ে উত্তর দেখানো (ন্যাচারাল ফিল দেওয়ার জন্য)
       setTimeout(() => {
         const botMessage = document.createElement("p");
         botMessage.style.margin = "8px 0";
