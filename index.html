@@ -344,38 +344,69 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.appendChild(script);
     });
   }
-  const chartButton = document.getElementById("chat-button");
+
+  // Cloudflare Worker Connected Chatbot Logic
+  const chatButton = document.getElementById("chat-button");
   const chatBox = document.getElementById("chat-box");
   const chatForm = document.getElementById("chat-form");
   const chatInput = document.getElementById("chat-input");
   const chatMessages = document.getElementById("chat-messages");
+
+  // আপনার ক্লাউডফ্লেয়ার ওয়ার্কারের লিংক এখানে যুক্ত করা হলো
+  const WORKER_URL = "https://tusherbd.play01728170476.workers.dev/";
+
   if (chatButton && chatBox) {
     chatButton.addEventListener("click", function () {
       chatBox.style.display = chatBox.style.display === "block" ? "none" : "block";
     });
   }
+
   if (chatForm) {
-    chatForm.addEventListener("submit", function (event) {
+    chatForm.addEventListener("submit", async function (event) {
       event.preventDefault();
       const question = chatInput.value.trim();
       if (!question) return;
+
       const userMessage = document.createElement("p");
-      userMessage.textContent = "আপনি: " + question;
+      userMessage.style.margin = "6px 0";
+      userMessage.style.textAlign = "right";
+      userMessage.innerHTML = "<b style='color: #087cff;'>আপনি:</b> " + question;
       chatMessages.appendChild(userMessage);
-      let answer = "এই প্রশ্নের সঠিক উত্তর দিতে আমাদের সঙ্গে WhatsApp-এ যোগাযোগ করুন।";
-      const q = question.toLowerCase();
-      if (q.includes("অর্ডার") || q.includes("order")) {
-        answer = "অর্ডার করতে ওয়েবসাইটের অর্ডার ফর্ম ব্যবহার করুন।";
-      } else if (q.includes("যোগাযোগ") || q.includes("contact")) {
-        answer = "আমাদের ওয়েবসাইটের Contact অংশ দেখুন।";
-      } else if (q.includes("দাম") || q.includes("price")) {
-        answer = "পণ্যের দাম জানতে আমাদের সঙ্গে যোগাযোগ করুন।";
-      }
-      const botMessage = document.createElement("p");
-      botMessage.textContent = "Tusher BD: " + answer;
-      chatMessages.appendChild(botMessage);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
       chatInput.value = "";
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      const loadingMessage = document.createElement("p");
+      loadingMessage.id = "loading-bot";
+      loadingMessage.style.margin = "6px 0";
+      loadingMessage.innerHTML = "<b style='color: #087f5b;'>Tusher BD:</b> লেখা হচ্ছে...";
+      chatMessages.appendChild(loadingMessage);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      try {
+        const response = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: question })
+        });
+
+        const data = await response.json();
+        document.getElementById("loading-bot").remove();
+
+        const botMessage = document.createElement("p");
+        botMessage.style.margin = "6px 0";
+        botMessage.innerHTML = "<b style='color: #087f5b;'>Tusher BD:</b> " + (data.reply || "দুঃখিত, কোনো উত্তর পাওয়া যায়নি।") +
+          "<br><a href='https://wa.me/8801728170476?text=" + encodeURIComponent(question) + "' target='_blank' style='font-size:12px; color:#087cff;'>💬 WhatsApp-এ কথা বলুন</a>";
+        chatMessages.appendChild(botMessage);
+
+      } catch (error) {
+        document.getElementById("loading-bot").remove();
+        const errorMessage = document.createElement("p");
+        errorMessage.style.margin = "6px 0";
+        errorMessage.innerHTML = "<b style='color: red;'>Tusher BD:</b> সার্ভারে সংযোগ স্থাপন করা যায়নি। দয়া করে WhatsApp-এ যোগাযোগ করুন।";
+        chatMessages.appendChild(errorMessage);
+      }
+
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     });
   }
 });
